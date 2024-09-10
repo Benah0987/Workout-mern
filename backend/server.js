@@ -1,9 +1,14 @@
- const express =  require('express')
+const express = require('express');
 
-//  express app
+// express app
 const app = express();
+
+// routes
+app.get('/', (req, res) => {
+    res.json({ msg: "Welcome to the app" });
+});
 
 // listen for request 
 app.listen(4000, () => {
-    console.log('listening on port 4000')
-})
+    console.log('listening on port 4000');
+});
