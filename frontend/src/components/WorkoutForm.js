@@ -9,7 +9,7 @@ const WorkoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const workout = {title, load, reps}
+        const workout = { title, load, reps }
 
         const response = await fetch("/api/workouts", {
             method: 'POST',
@@ -21,48 +21,49 @@ const WorkoutForm = () => {
 
         const json = await response.json()
 
-        if(!response.ok){
+        if (!response.ok) {
             setError(json.error)
         }
-        if(response.ok){
+        if (response.ok) {
             setTitle('')
             setLoad('')
             setReps('')
             setError(null)
-            console.log('new workout added')
+            console.log('new workout added', json)
         }
     }
 
-
     return (
-        <form className = "create">
+        <form className="create" onSubmit={handleSubmit}>
             <h3>Add New Workout</h3>
 
             <label>Exercise Title</label>
             <input
-               type = "text"
-               onChange ={(e) => setTitle(e.target.value)}
-               value = {title}
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+                required
             />
 
             <label>Load (kg)</label>
             <input
-               type = "number"
-               onChange ={(e) => setLoad(e.target.value)}
-               value = {load}
+                type="number"
+                onChange={(e) => setLoad(e.target.value)}
+                value={load}
+                required
             />
 
             <label>Reps</label>
             <input
-               type = ""
-               onChange ={(e) => setReps(e.target.value)}
-               value = {reps}
+                type="number"  // Correct the input type
+                onChange={(e) => setReps(e.target.value)}
+                value={reps}
+                required
             />
-            <button> Add Workout</button>
-            {error && <div className="error"> {error}</div>}
+            <button type="submit">Add Workout</button>
+            {error && <div className="error">{error}</div>}
         </form>
     )
-
 }
 
-export default WorkoutForm
+export default WorkoutForm;
