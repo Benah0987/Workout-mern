@@ -3,6 +3,7 @@ import { useWorkoutContext } from "../Hook/useWorkoutContext";
 
 const WorkoutForm = () => {
     const { dispatch } = useWorkoutContext();  
+    const [category, setCategory] = useState('')
     const [title, setTitle] = useState('')
     const [load, setLoad] = useState('')
     const [reps, setReps] = useState('')
@@ -11,7 +12,7 @@ const WorkoutForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const workout = { title, load, reps }
+        const workout = { title, load, reps, category}
 
         const response = await fetch("/api/workouts", {
             method: 'POST',
@@ -27,6 +28,7 @@ const WorkoutForm = () => {
             setError(json.error)
         }
         if (response.ok) {
+            setCategory('')
             setTitle('')
             setLoad('')
             setReps('')
@@ -39,6 +41,13 @@ const WorkoutForm = () => {
     return (
         <form className="create" onSubmit={handleSubmit}>
             <h3>Add New Workout</h3>
+            <label>Exercise Category</label>
+            <input
+                type="text"
+                onChange={(e) => setCategory(e.target.value)}
+                value={category}
+                required
+            />
 
             <label>Exercise Title</label>
             <input

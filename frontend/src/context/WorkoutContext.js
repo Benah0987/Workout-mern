@@ -4,6 +4,7 @@ import { createContext, useReducer } from "react";
 export const WorkoutContext = createContext();
 
 // Reducer to handle different workout actions
+
 export const workoutReducer = (state, action) => {
   switch(action.type) {
     case 'SET_WORKOUT':
@@ -16,10 +17,16 @@ export const workoutReducer = (state, action) => {
         workouts: [action.payload, ...state.workouts]
       };
 
+    case 'DELETE_WORKOUT':
+      return {
+        workouts: state.workouts.filter((w) => w._id !== action.payload._id)  // Use _id consistently
+      };
+
     default:
       return state;
   }
 };
+
 
 // Context provider to wrap your application and pass down state and dispatch
 export const WorkoutContextProvider = ({ children }) => {
