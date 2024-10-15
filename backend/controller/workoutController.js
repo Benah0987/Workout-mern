@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 
 // Controller function to create a new workout
 const createWorkout = async (req, res) => {
-    const { title, load, reps } = req.body;
+    const { title, load, reps, category } = req.body;
 
     try {
-        const workout = new Workout({ title, load, reps });
+        const workout = new Workout({ title, load, reps, category });
         await workout.save();
         res.status(201).json(workout);
     } catch (error) {
