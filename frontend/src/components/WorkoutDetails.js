@@ -1,5 +1,7 @@
 import { useWorkoutContext } from "../Hook/useWorkoutContext";
 
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();  // Now it's correctly used.
 
@@ -26,7 +28,7 @@ const WorkoutDetails = ({ workout }) => {
       <p><strong>Reps:</strong> {workout.reps}</p>
       <p><strong>Created on:</strong> {new Date(workout.createdAt).toLocaleDateString()}</p>
       <p><strong>Created at:</strong> {new Date(workout.createdAt).toLocaleTimeString()}</p>
-      <span onClick={handleClick}>Delete</span>
+      <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
     </div>
   );
 };

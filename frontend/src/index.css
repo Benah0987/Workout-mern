@@ -7,29 +7,40 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
+b/* layout */
+:root {
+  --primary: #1aac83; /* Original primary color */
+  --error: #e7195a;   /* Original error color */
+  --nav-bg: ;  /* New navigation background color */
+}
+
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
+
 header {
-  background: #fff;
+  background: #007bff; /* Use the new background color */
+  width: 100%;               /* Ensure it spans the entire width */
+  padding: 10px 0;          /* Adjust padding if needed */
 }
+
 header .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 1400px;        /* Retain the max width for content */
+  margin: 0 auto;           /* Center the container */
+  display: flex;            /* Use flexbox for layout */
+  align-items: center;      /* Center items vertically */
+  justify-content: space-between; /* Space between items */
 }
+
 header a {
-  color: #333;
+  color: #fff;              /* Change link color to white for contrast */
   text-decoration: none;
   padding: 6px;
   border-radius: 50%;
-
 }
+
 .pages{
   max-width: 1400px;
   padding: 20px;
